@@ -1,4 +1,17 @@
 /*
+JSSM @VERSION (JavaScript State Manager)
+Copyright (c) 2008 Nathan Hammond
+
+Licensed under the MIT License (LICENSE.txt)
+
+To report bugs or get the lates version, visit the website:
+http://trac.nathanhammond.com/jssm/
+
+$Date$
+$Revision$
+*/
+
+/*
 Object jssm
 Supplies history storage and browser abstraction layer for managing history.
 */
@@ -165,21 +178,6 @@ var jssm = {
 		if (jssm.functions.beforeload) { jssm.functions.beforeload(calchash); }
 		if (jssm.functions.load) { jssm.functions.load(calchash); }
 		if (jssm.functions.afterload) { jssm.functions.afterload(calchash); }
-
-
-		/*
-		TODO: Find a solution to the "repetition of history" problem for manually re-entered hashes.
-		FIXME: There is a possible fail state, if a person manually re-enters a previously existing hash it will be appended to the end of the history, but the stack pointer will be adjusted to the first time it appeared in the history stack. This creates a state where you've come to the page "fresh" but are loading the old state.
-
-		PARTIAL SOLUTION: Watch for changes in window.history.length. Compare these to the initial length when arriving at the page and the number of items on the site's stack.
-
-		Success Scenarios:
-		1. A manually re-entered hash that matches the current one won't trigger an event or change the length (click location bar, press enter, no change).
-		2. A manually re-entered hash that doesn't match the current hash changes window.history.length, and is catchable.
-
-		Fail Scenarios:
-		1. The user is exactly one spot deep in the browser history stack. The length does not change because it pops all future events off the stack and adds a new one immediately.
-		*/
 
 		// Figure out where to set the pointer.
 		var exists = [];
