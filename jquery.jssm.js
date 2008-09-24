@@ -273,7 +273,7 @@ var jssm = {
 	*/
 	getRID: function (hash) {
 		if (!hash) { return 0; }
-		var str = hash.match(/rid=\d/);
+		var str = hash.match(/rid=[\d]+/);
 		return str ? str[0].substr(4) : 0;
 	},
 
@@ -580,7 +580,7 @@ jQuery.fn.jssm = function (eventtype, params) {
 
 			// Set the hash.
 			if (target !== false) {
-				target = target + '?rid=' + (jssm.rid++) + data;
+				target = target + (target.indexOf('?') >= 0 ? '&' : '?') + 'rid=' + (jssm.rid++) + data;
 				jssm.setHash(target);
 			}
 
