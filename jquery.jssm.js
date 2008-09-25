@@ -385,7 +385,7 @@ var jssm = {
 	*/
 	getRelativePath: function (from, to, strict) {
 		// Check for the fastest scenario.
-		if (from == to) { return this.getCurrentPage(to); }
+		if (from == to && to.indexOf('?') == -1) { return this.getCurrentPage(to); }
 
 		from = this.getPathTokens(from);
 		to = this.getPathTokens(to);
