@@ -24,6 +24,9 @@ jssm.functions.load = function (hash) {
 		var matches = regextitle.exec(response);
 		jssm.setTitle(jssm.buildTitle(matches[1]));
 
+		/* Make sure the browser history list shows the correct title. */
+		window.location.replace(window.location);
+
 		/* Get the new content. */
 		var inside = response.substring(response.indexOf('<body>') + 6, response.indexOf('</body>'));
 
